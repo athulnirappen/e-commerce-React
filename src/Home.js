@@ -3,7 +3,7 @@ import React from "react";
 import Herosection from "./components/Herosection";
 import Services from "./components/Services";
 import Trusted from "./components/Trusted";
-// import FeatureProducts from "./components/FeatureProducts";
+import FeatureProducts from "./components/FeatureProducts";
 
 const Home = () => {
   const data = {
@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <>
       <Herosection mydata={data} />
-      {/* <FeatureProducts /> */}
+      <FeatureProducts />
       <Services />
       <Trusted />
     </>
