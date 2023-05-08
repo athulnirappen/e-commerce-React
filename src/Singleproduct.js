@@ -7,9 +7,10 @@ import MyImage from "./components/MyImage";
 import { Container } from "./styles/Container";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
-import FormatPrice from "./components/FormatPrice";
+
 import Star from "./components/Star";
 import AddToCart from "./components/AddToCart";
+import FormatPrice from "./components/FormatPrice";
 
 const API = "https://api.pujakaitem.com/api/products";
 

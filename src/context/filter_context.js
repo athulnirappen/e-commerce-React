@@ -1,44 +1,42 @@
-import {createContext, useEffect, useReducer} from "react"
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { useProductContext } from "./Productcontext";
-import filterreducer from "../reducer/filterreducer";
+import reducer from "../reducer/filterreducer";
 
 export const FilterContext = createContext();
 
 const initialState = {
-    filter_products:[],
-    all_products: [],
-    grid_view: true,
-    sorting_value: "lowest",
-    filters: {
-        text: "",
-        category: "all",
-        company: "all",
-        color: "all",
-        maxPrice: 0,
-        price: 0,
-        minPrice: 0
-    
-    }
-}
+  filter_products: [],
+  all_products: [],
+  grid_view: true,
+  sorting_value: "lowest",
+  filters: {
+    text: "",
+    category: "all",
+    company: "all",
+    color: "all",
+    maxPrice: 0,
+    price: 0,
+    minPrice: 0,
+  },
+};
 
-export const FilterContextProvider = async ({ children }) => {
+export const FilterContextProvider = ({ children }) => {
   const { products } = useProductContext();
 
-  const [state, dispatch] = useReducer(filterreducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   //set grid view
 
   const setGridView = () => {
     dispatch({ type: "SET_GRID_VIEW" });
   };
-
-  //set list view
+  //list view
 
   const setListView = () => {
     dispatch({ type: "SET_LIST_VIEW" });
   };
 
-  //sorting function
+  // sorting function
 
   const sorting = (event) => {
     let userValue = event.target.value;
@@ -50,6 +48,7 @@ export const FilterContextProvider = async ({ children }) => {
   const updateFilterValue = (event) => {
     let name = event.target.name;
     let value = event.target.value;
+
     dispatch({ type: "UPDATE_FILTERS_VALUE", payload: { name, value } });
   };
 
@@ -84,4 +83,8 @@ export const FilterContextProvider = async ({ children }) => {
       {children}
     </FilterContext.Provider>
   );
-}
+};
+
+export const useFilterContext = () => {
+  return useContext(FilterContext);
+};

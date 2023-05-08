@@ -4,14 +4,16 @@ import './index.css';
 import App from './App';
 import { AppProvider } from './context/Productcontext';
 import { FilterContextProvider } from './context/filter_context';
-
+import { CartProvider } from './context/cart_context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AppProvider>
       <FilterContextProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </FilterContextProvider>
     </AppProvider>
   </React.StrictMode>
